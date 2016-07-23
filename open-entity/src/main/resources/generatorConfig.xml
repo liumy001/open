@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\repository\lib\org\ojdbc6\ojdbc6\6.0\ojdbc6-6.0.jar"/>
+
+    <context id="oracle" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@172.16.5.114:1521:testsmsdb"
+                        userId="hlservicedispatch"
+                        password="homelink">
+        </jdbcConnection>
+
+
+        <javaModelGenerator targetPackage="com.ziroom.sms.entity"
+                            targetProject="D:\home_link\code\homelink\sms\sms-entity\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+
+        <sqlMapGenerator targetPackage="com.ziroom.sms.services.cleaning.dao.map"
+                         targetProject="D:\home_link\code\homelink\sms\sms-biz-cleaning\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.ziroom.sms.services.cleaning.dao"
+                             targetProject="D:\home_link\code\homelink\sms\sms-biz-cleaning\src\main\java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="month_clean_follow_log" domainObjectName="MonthCleanFollowLog" catalog="hlservicedispatch">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+        <table tableName="tservicearea_houses" domainObjectName="ServiceareaHouses" catalog="hlservicedispatch">
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

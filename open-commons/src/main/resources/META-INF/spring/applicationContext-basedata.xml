@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<context:component-scan base-package="com.ziroom.sms" />
+	<context:component-scan base-package="com.asura"/>
+	<context:property-placeholder location="classpath:jdbc.properties,common.properties,quartz.properties" ignore-unresolvable="true"/>
+
+    <!--数据源配置 -->
+	<bean id="basedata.dbcp" abstract="true">
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="validationQuery" value="${jdbc.validationQuery}" />
+		<property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+	</bean>
+
+
+
+	<bean id="basedata.datasource.M" parent="basedata.dbcp"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.oracle.driverClassName}" />
+		<property name="url" value="${jdbc.oracle.basedata.url.master}" />
+		<property name="username" value="${jdbc.oracle.basedata.username.master}" />
+		<property name="password" value="${jdbc.oracle.basedata.password.master}" />
+	</bean>
+
+	<bean id="basedata.datasource.S" parent="basedata.dbcp"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.oracle.driverClassName}" />
+		<property name="url" value="${jdbc.oracle.basedata.url.slave}" />
+		<property name="username" value="${jdbc.oracle.basedata.username.slave}" />
+		<property name="password" value="${jdbc.oracle.basedata.password.slave}" />
+	</bean>
+	
+	
+	<bean id="basedata.sqlSessionFactory.M" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="basedata.datasource.M"/>
+    	<property name="mapperLocations" value="classpath*:com/ziroom/sms/commons/basedata/dao/map/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+    </bean>
+    
+     <bean id="basedata.sqlSessionFactory.S" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="basedata.datasource.S"/>
+    	<property name="mapperLocations" value="classpath*:com/ziroom/sms/commons/basedata/dao/map/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+    </bean>
+    
+    
+     <bean id="basedata.writeSqlSessionTemplate.M" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="basedata.sqlSessionFactory.M"/>
+    </bean>
+    
+     <bean id="basedata.writeSqlSessionTemplate.S" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="basedata.sqlSessionFactory.S"/>
+    </bean>
+    
+    <bean id="basedata.MybatisDaoContext" class="com.asura.framework.dao.mybatis.base.MybatisDaoContext">
+        <property name="writeSqlSessionTemplate" ref="basedata.writeSqlSessionTemplate.M"></property>
+        <property name="readSqlSessionTemplate" ref="basedata.writeSqlSessionTemplate.S"></property>
+    </bean>
+	
+
+	<bean id="basedata.transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="basedata.datasource.M" />
+	</bean>
+
+     <tx:advice id="basedata.txAdvice" transaction-manager="basedata.transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="merge*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+
+
+
+   
+
+	<aop:config expose-proxy="true">
+		<!-- 只对业务逻辑层实施事务 -->
+		<aop:pointcut id="txPointcut" expression="execution(* com..service..*.*(..))" />
+		<aop:advisor advice-ref="basedata.txAdvice" pointcut-ref="txPointcut" />
+	</aop:config>
+
+
+</beans>

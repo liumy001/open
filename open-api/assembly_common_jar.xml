@@ -1,0 +1,30 @@
+<!--
+  ~ Copyright (c) 2016. ziroom.com.
+  -->
+
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/assembly-1.0.0.xsd">
+    <id>0.0.1</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.outputDirectory}</directory>
+            <includes>
+                <include>**/pub/**/api/commons/**/*.class</include>
+                <include>META-INF/spring/*-commons.xml</include>
+            </includes>
+<!--            <excludes>
+                <exclude>**/application.properties</exclude>
+                <exclude>**/message/*.*</exclude>
+                <exclude>META-INF/spring/application*.xml</exclude>
+                <exclude>META-INF/spring/*provider.xml</exclude>
+                <exclude>logback.xml</exclude>
+            </excludes>-->
+            <fileMode>0755</fileMode>
+            <outputDirectory>/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

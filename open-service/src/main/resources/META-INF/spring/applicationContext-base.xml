@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <import resource="datasource.xml"/>
+    <import resource="base-provider.xml"/>
+    <context:component-scan base-package="com.pub.open" />
+    <context:component-scan base-package="com.asura"/>
+    <context:property-placeholder
+            location="classpath:jdbc.properties,redis.properties,dubbo.properties"/>
+
+    <!-- Mybatis分页 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="fcDataSource" />
+        <!-- <property name="mapperLocations" value="classpath:com/abali/mapping/*Mapper.xml" /> -->
+        <property name="configLocation" value="classpath:mybatis/mybatis-configuration.xml" />
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                            <!-- 3.3.0版本可用 - 分页参数合理化，默认false禁用 -->
+                            <!-- 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页 -->
+                            <!-- 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据 -->
+                            reasonable=true
+                            <!-- 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用
+                                   和startPage中的pageNum效果一样-->
+                            offsetAsPageNum=false
+                            <!-- 设置为true时，使用RowBounds分页会进行count查询 -->
+                            rowBoundsWithCount=false
+                            <!-- 设置为true时，如果pageSize=0或者RowBounds.limit = 0就会查询出全部的结果 -->
+                            <!-- （相当于没有执行分页查询，但是返回结果仍然是Page类型）-->
+                            pageSizeZero=false
+                            <!-- 3.5.0版本可用 - 为了支持startPage(Object params)方法 -->
+                            <!-- params参数 增加了一个`params`参数来配置参数映射，用于从Map或ServletRequest中取值 -->
+                            <!-- 可以配置pageNum,pageSize,count,pageSizeZero,reasonable,不配置映射的用默认值 -->
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.pub.**.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="fcDataSource" />
+    </bean>
+
+    <!-- 注解方式配置事物 -->
+    <!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+
+    <!-- 拦截器方式配置事物 -->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
+            <tx:method name="del*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>
+            <tx:method name="find*" propagation="SUPPORTS" />
+            <tx:method name="get*" propagation="SUPPORTS" />
+            <tx:method name="query" propagation="SUPPORTS" />
+            <tx:method name="search*" propagation="SUPPORTS" />
+        </tx:attributes>
+    </tx:advice>
+    <!-- expose-proxy="true" 解决“自我调用”而导致的不能设置正确的事务属性问题  execution(* *..service*..*(..))  -->
+    <aop:config expose-proxy="true">
+        <aop:pointcut id="transactionPointcut" expression="execution(* *..service*..*(..))" />
+        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
+    </aop:config>
+
+
+
+    <bean id="base.sms.sender.factory" class="com.asrua.framework.sms.SmsSenderFactory"/>
+    <bean id="base.sms.receive.factory" class="com.asrua.framework.sms.SmsReceiveFactory"/>
+
+</beans>
