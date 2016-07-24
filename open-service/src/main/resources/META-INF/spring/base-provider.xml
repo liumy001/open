@@ -26,6 +26,8 @@
     <dubbo:service interface="com.pub.open.api.commons.CommonService"  version="0.0.1"
                    ref="common.pubservice" protocol="dubbo">
         <dubbo:method name="sayHello" timeout="80000" retries="3" async="false" />
+        <dubbo:method name="sendTextMail" timeout="80000" retries="3" async="false" />
+        <dubbo:method name="sendHtmlMail" timeout="80000" retries="3" async="false" />
     </dubbo:service>
 
 </beans>

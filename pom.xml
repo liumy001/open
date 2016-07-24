@@ -111,11 +111,51 @@
         <!-- 	<hessian.version>4.0.7</hessian.version> -->
         <!-- rabbitmq end -->
         <dubbo.cat.version>1.0.0-SNAPSHOTS</dubbo.cat.version>
+        <mail_version>1.4.7</mail_version>
+        <mongo-java-driver>2.13.0-rc0</mongo-java-driver>
+        <spring-data-mongodb>1.6.1.RELEASE</spring-data-mongodb>
+        <spring-data-mongodb-cross-store>1.6.1.RELEASE</spring-data-mongodb-cross-store>
+        <spring-data-mongodb-log4j>1.6.1.RELEASE</spring-data-mongodb-log4j>
+
+        <mybatis-ehcache>1.0.3</mybatis-ehcache>
     </properties>
 
 
     <dependencyManagement>
+
+
+
+
+
         <dependencies>
+
+            <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${mail_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mongodb</groupId>
+                <artifactId>mongo-java-driver</artifactId>
+                <version>${mongo-java-driver}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring-data-mongodb}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb-cross-store</artifactId>
+                <version>${spring-data-mongodb-cross-store}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb-log4j</artifactId>
+                <version>${spring-data-mongodb-log4j}</version>
+            </dependency>
             <!-- mybatis分页插件 -->
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
@@ -125,7 +165,7 @@
             <dependency>
                 <groupId>org.mybatis.caches</groupId>
                 <artifactId>mybatis-ehcache</artifactId>
-                <version>1.0.3</version>
+                <version>${mybatis-ehcache}</version>
             </dependency>
             <dependency>
                 <groupId>com.rabbitmq</groupId>
