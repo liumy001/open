@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>短信发短信开关</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum SMSIssendEnum {
 	
 	SMS_IS_SEND_ENUM("sms-commons", "sms-is-send", "true", "短信发短信开关");

@@ -38,6 +38,7 @@
             <groupId>com.asura</groupId>
             <artifactId>com-asura-framework-logback</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
@@ -46,14 +47,7 @@
             <groupId>org.mybatis.caches</groupId>
             <artifactId>mybatis-ehcache</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-subscribe</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-sms</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -301,18 +295,26 @@
             <artifactId>open-commons</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-quartz-ext</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asuraquartz-framework-quartz-all</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
         </dependency>
         <!-- cat start -->
      <!--   <dependency>

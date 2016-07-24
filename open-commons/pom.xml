@@ -30,10 +30,7 @@
             <groupId>com.asura</groupId>
             <artifactId>com-asura-framework-dao</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-subscribe</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -138,6 +135,14 @@
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.thrift</groupId>
@@ -337,6 +342,7 @@
                                 <include>**/common.properties</include>
                                 <include>META-INF/spring/application*.xml</include>-->
                               <!--  <exclude>**/quartz.properties</exclude>-->
+                                <include>META-INF/spring/application*.xml</include>
                             </includes>
                             <excludes>
                                 <exclude>**/logback.xml</exclude>

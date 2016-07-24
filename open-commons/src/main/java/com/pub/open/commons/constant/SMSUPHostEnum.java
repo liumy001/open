@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>短信网关上行域名地址</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum SMSUPHostEnum {
 	
 	SMS_UP_HOST_ENUM("sms-commons", "sms-up-host", "http://114.113.155.149:8888/callApi.aspx", "短信网关上行域名地址");

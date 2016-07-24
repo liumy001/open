@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>短信发送关闭错误</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum SMSCloseMsgEnum {
 	SMS_CLOSE_MSG_ENUM("sms-commons", "sms-close-msg", "fail:短信开关已关闭", "短信开关已关闭");
 

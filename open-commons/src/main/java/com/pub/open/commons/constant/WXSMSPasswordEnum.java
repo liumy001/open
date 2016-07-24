@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>维修发短信密码</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum WXSMSPasswordEnum {
 	
 	WX_SMS_PASSWORD_ENUM("sms-commons", "sms-wx-password", "ziroom888", "维修发短信密码");

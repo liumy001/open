@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>维修发短信账号</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum WXSMSAccountEnum {
 	
 	WX_SMS_ACCOUNT_ENUM("sms-commons", "sms-wx-account", "ziru_weixiu", "维修发短信账号");

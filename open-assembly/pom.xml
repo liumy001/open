@@ -26,7 +26,10 @@
             <groupId>com.asura</groupId>
             <artifactId>com-asura-framework-rabbitmq</artifactId>
         </dependency>
-
+     <!--   <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-sms</artifactId>
+        </dependency>-->
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -315,10 +318,7 @@
             <artifactId>commons-httpclient</artifactId>
         </dependency>
         <!--axis2 webservice调用 -->
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-sms</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>

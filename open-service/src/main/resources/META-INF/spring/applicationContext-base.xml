@@ -83,7 +83,7 @@
 
 
 
-    <bean id="base.sms.sender.factory" class="com.asrua.framework.sms.SmsSenderFactory"/>
-    <bean id="base.sms.receive.factory" class="com.asrua.framework.sms.SmsReceiveFactory"/>
+<!--    <bean id="base.sms.sender.factory" class="com.asrua.framework.sms.SmsSenderFactory"/>
+    <bean id="base.sms.receive.factory" class="com.asrua.framework.sms.SmsReceiveFactory"/>-->
 
 </beans>

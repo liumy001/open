@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>维修发短信账号id</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum WXSMSUserIdEnum {
 	
 	WX_SMS_USERID_ENUM("sms-commons", "sms-wx-userId", "531", "维修发短信账号id");

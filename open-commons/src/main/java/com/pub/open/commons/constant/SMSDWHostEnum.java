@@ -9,7 +9,6 @@
  */
 package com.pub.open.commons.constant;
 
-import com.asura.framework.conf.subscribe.AsuraSub;
 
 /**
  * <p>短信网关下行域名地址</p>
@@ -24,7 +23,6 @@ import com.asura.framework.conf.subscribe.AsuraSub;
  * @since 1.0
  * @version 1.0
  */
-@AsuraSub
 public enum SMSDWHostEnum {
 	
 	SMS_DW_HOST_ENUM("sms-commons", "sms-dw-host", "http://114.113.155.149:8888/sms.aspx", "短信网关下行域名地址");

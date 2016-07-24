@@ -5,6 +5,7 @@ package com.pub.open.api.commons;
  */
 public interface CommonService {
 
+
     String sayHello(String content);
 
 }
