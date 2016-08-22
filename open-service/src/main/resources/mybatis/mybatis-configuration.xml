@@ -17,7 +17,7 @@
 	</settings>
 
 	<!-- 别名 -->
-<!--	<typeAliases>
+<!--  <typeAliases>
         <typeAlias type="com.ziroom.business.accountCenter.suggestion.model.SuggestionFollowRecord"  alias="suggestionFollowRecord" />
 	</typeAliases>-->
 

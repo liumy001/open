@@ -12,18 +12,13 @@
     <artifactId>open-service</artifactId>
 
     <dependencies>
-      <!--  <dependency>
+        <dependency>
             <groupId>org.ojdbc6</groupId>
             <artifactId>ojdbc6</artifactId>
-        </dependency>-->
-        <dependency>
-            <groupId>com.pub.open</groupId>
-            <artifactId>open-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.pub.open</groupId>
-            <artifactId>open-core</artifactId>
+            <artifactId>open-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -37,6 +32,19 @@
         <dependency>
             <groupId>com.asura</groupId>
             <artifactId>com-asura-framework-logback</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-sms</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-rabbitmq</artifactId>
         </dependency>
 
         <dependency>
@@ -317,14 +325,14 @@
             <artifactId>spring-core</artifactId>
         </dependency>
         <!-- cat start -->
-     <!--   <dependency>
+        <dependency>
             <groupId>com.dianping.cat</groupId>
             <artifactId>cat-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.unidal.framework</groupId>
             <artifactId>foundation-service</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -353,14 +361,14 @@
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-reflect</artifactId>
         </dependency>
-    <!--    <dependency>
+        <dependency>
             <groupId>com.ziroom.platform.misc.dubbo</groupId>
             <artifactId>dubbo-cat</artifactId>
         </dependency>
         <dependency>
             <groupId>com.ziroom.platform.tesla</groupId>
             <artifactId>tesla-druid</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>

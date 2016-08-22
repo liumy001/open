@@ -13,10 +13,6 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-logback</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.rabbitmq</groupId>
@@ -24,12 +20,29 @@
         </dependency>
         <dependency>
             <groupId>com.asura</groupId>
-            <artifactId>com-asura-framework-rabbitmq</artifactId>
+            <artifactId>com-asura-framework-base</artifactId>
         </dependency>
-     <!--   <dependency>
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-dao</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-logback</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-cache</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.asura</groupId>
             <artifactId>com-asura-framework-sms</artifactId>
-        </dependency>-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.asura</groupId>
+            <artifactId>com-asura-framework-rabbitmq</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -328,19 +341,15 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-      <!--  <dependency>
-            <groupId>com.ziroom.hore</groupId>
-            <artifactId>hore-biz-base-consumer-inner</artifactId>
-        </dependency>-->
-        <!-- cat start -->
-    <!--    <dependency>
+      <!--   cat start-->
+        <dependency>
             <groupId>com.dianping.cat</groupId>
             <artifactId>cat-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.unidal.framework</groupId>
             <artifactId>foundation-service</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -378,14 +387,14 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
-   <!--     <dependency>
+     <dependency>
             <groupId>com.ziroom.platform.tesla</groupId>
             <artifactId>tesla-druid</artifactId>
         </dependency>
         <dependency>
             <groupId>com.ziroom.platform.misc.dubbo</groupId>
             <artifactId>dubbo-cat</artifactId>
-        </dependency>-->
+        </dependency>
         <!-- cat end -->
     </dependencies>
 

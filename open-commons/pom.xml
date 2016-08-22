@@ -36,10 +36,10 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb-log4j</artifactId>
         </dependency>
-      <!--  <dependency>
+        <dependency>
             <groupId>org.ojdbc6</groupId>
             <artifactId>ojdbc6</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>com.pub.open</groupId>
             <artifactId>open-entity</artifactId>

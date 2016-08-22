@@ -13,6 +13,4 @@
                      interface="com.pub.open.api.commons.CommonService" check="true" timeout="8000"  version="0.0.1"/>
 
 
-
-
 </beans>

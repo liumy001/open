@@ -72,9 +72,10 @@
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <mysql-connector-java.version>5.1.33</mysql-connector-java.version>
 
-        <asura_version>0.0.1</asura_version>
+        <asura_version>0.0.5</asura_version>
         <sms-version>1.0-SNAPSHOT</sms-version>
         <objdc-version>6.0</objdc-version>
+        <asura.log.version>0.0.3</asura.log.version>
         <asura_quartz_version>1.8.6</asura_quartz_version>
 
         <axis2.adb.version>1.6.2</axis2.adb.version>
@@ -186,8 +187,40 @@
             <dependency>
                 <groupId>com.asura</groupId>
                 <artifactId>com-asura-framework-logback</artifactId>
+                <version>${asura.log.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.asura</groupId>
+                <artifactId>com-asura-framework-cache</artifactId>
                 <version>${asura_version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.asura</groupId>
+                <artifactId>com-asura-framework-dubbo-scheduler</artifactId>
+                <version>${asura_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.asura</groupId>
+                <artifactId>com-asura-framework-subscribe</artifactId>
+                <version>${asura_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.asura</groupId>
+                <artifactId>com-asura-framework-quartz-ext</artifactId>
+                <version>${asura_quartz_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.asura</groupId>
+                <artifactId>com-asuraquartz-framework-quartz-all</artifactId>
+                <version>${asura_quartz_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.asura</groupId>
+                <artifactId>com-asura-framework-sms</artifactId>
+                <version>${asura_version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.asura</groupId>
                 <artifactId>com-asura-framework-rabbitmq</artifactId>

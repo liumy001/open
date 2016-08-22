@@ -7,11 +7,10 @@ import com.pub.open.entity.MailInfo;
  */
 public interface CommonService {
 
-
     String sayHello(String content);
 
-    public  String sendTextMail(MailInfo mailInfo);
+    String sendTextMail(MailInfo mailInfo);
 
-    public  String sendHtmlMail(MailInfo mailInfo);
+    String sendHtmlMail(MailInfo mailInfo);
 
 }
